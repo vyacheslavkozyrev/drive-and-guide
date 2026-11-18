@@ -104,5 +104,5 @@ State lives in `progress.md` (phase table, **Current Task** with the step reache
 
 ## 10. Open decisions
 
-1. The backend (.NET, `architecture.md` §4) needs its own rule file when the first backend feature is specified.
+1. The .NET backend has its rule file (`.claude/rules/dotnet.md`). Its build and test checks are not in `build-all.sh` yet; the first backend feature adds them.
 2. Xcode is needed for app targets. The script that runs the checks does not cover them until the first app target feature extends it.

@@ -32,7 +32,7 @@ Locate `spec/specifications/F-XX-*/`. Read narrowly — these files grow with ev
 
 ## Step 4 — Review (you do it yourself; never spawn another agent)
 
-Run `git diff --cached` and read the rule files that apply: `.claude/rules/swift.md`, `general.md` and `qa.md`. Read only the `architecture.md` sections and the screens (`spec/design/features/F-XX-*/`) that the change touches (`grep -n '^## '` to find them). Produce findings, not summaries. Evaluate every hunk for:
+Run `git diff --cached` and read the rule files that apply: `.claude/rules/general.md` and `qa.md`, plus `swift.md` for Swift code and `dotnet.md` for code under `source/Backend/`. Read only the `architecture.md` sections and the screens (`spec/design/features/F-XX-*/`) that the change touches (`grep -n '^## '` to find them). Produce findings, not summaries. Evaluate every hunk for:
 
 1. **Correctness** — satisfies the criteria it claims; logic errors, off-by-one, wrong error codes.
 2. **Architecture** — package boundaries and dependency direction (`architecture.md` §3); the layout and states of the approved screen the task builds, for a UI change.

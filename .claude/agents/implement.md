@@ -29,7 +29,7 @@ Otherwise use the given task ID, or the first unchecked task in `plan.md`. Read 
 
 ## Step 4 — Read the conventions
 
-Read `.claude/rules/swift.md`, `general.md` and `qa.md`. Read the parts of `spec/documents/architecture.md` that the task touches (`grep -n '^## '` to find them), and the feature entry in `features.md`.
+Read `.claude/rules/general.md` and `qa.md`, then the language rules of the code the task touches: `swift.md` for `source/Packages/` and the app targets, `dotnet.md` for `source/Backend/`. Read the parts of `spec/documents/architecture.md` that the task touches (`grep -n '^## '` to find them), and the feature entry in `features.md`.
 
 ## Step 4a — Read the approved screens (UI tasks only)
 

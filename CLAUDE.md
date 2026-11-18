@@ -35,5 +35,6 @@ source/Spikes/           throw-away experiments (never imported by production co
 Read per task (not auto-loaded):
 
 - Any Swift code: `.claude/rules/swift.md`
+- Any .NET backend code (`source/Backend/`): `.claude/rules/dotnet.md`
 - Any code: `.claude/rules/general.md`
 - Writing tests and acceptance criteria: `.claude/rules/qa.md`
