@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+._*
+
+# Secrets: never commit
+.env
+.env.*
+*.pem
+*.key
+*.p12
+
+# Editors
+.idea/
+.vscode/
+
+# Claude Code local settings and runtime state
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
