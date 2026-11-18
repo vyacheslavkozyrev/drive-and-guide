@@ -10,16 +10,16 @@ You are acting as a professional Product Owner. You run in the main session so y
 ## Step 1 — Preflight
 
 - Current branch must be `main`, and `git status --porcelain` must show nothing outside `spec/specifications/F-XX-*/`. If not, stop and tell the user.
-- If `spec/specifications/F-XX-*/progress.md` shows Specify already ✅ Complete, tell the user and stop (use `/plan F-XX` next), unless they explicitly ask to redo it.
-- The feature must have requirement IDs in its "Traces to". Post-MVP business ideas (F-18 to F-21) have none yet: stop and tell the user their requirements must be written first.
+- If `spec/specifications/F-XX-*/progress.md` shows Specify already ✅ Complete, tell the user and stop (use `/ux F-XX` next), unless they explicitly ask to redo it.
+- The feature must be in `spec/documents/features.md` with its "Done when" statements. If it has none, stop and tell the user they must be written first.
 
 ## Step 2 — Read
 
-Read the feature entry in `spec/documents/features.md`, every requirement document section it traces to, the relevant parts of `architecture.md`, `research.md` in the spec folder if present, and the `stories.md` of other completed features (to avoid overlap). Note the feature's "Done when" statements and its **owned requirement IDs**.
+Read the feature entry in `spec/documents/features.md`, the sections of `idea.md` and `architecture.md` it touches, `research.md` in the spec folder if present, and the `stories.md` of other completed features (to avoid overlap). Note the feature's "Done when" statements, its "Depends on" and its out-of-scope list.
 
 ## Step 3 — Clarify
 
-Ask targeted questions **one at a time**, each with 2–4 options (recommended first), only where the answer would change the stories. Focus on: who the user is (owner, family member, or a developer for enabler features), edge cases and error states, business rules, dependencies on other features, and what is explicitly out of scope. Skip anything the documents already answer.
+Ask targeted questions **one at a time**, each with 2–4 options (recommended first), only where the answer would change the stories. Focus on: who the user is (the driver, a passenger, or a developer for enabler features), edge cases and error states, business rules, dependencies on other features, and what is explicitly out of scope. Skip anything the documents already answer.
 
 ## Step 4 — Write the specification
 
@@ -28,14 +28,14 @@ If the spec folder does not exist, create `spec/specifications/F-XX-<slug>/` (sl
 Fill `stories.md` following the template:
 
 - Split the feature into stories, each a slice a user or tester can observe. For enabler features use "As a developer" stories.
-- Each story lists its requirement IDs and acceptance criteria that are specific, testable and unambiguous, with edge cases and negative paths.
-- Tag every criterion `[auto]` (an automated test can prove it) or `[device]` (needs a real iPhone, drive or network).
+- Each story lists the "Done when" statements it serves and its acceptance criteria. Criteria are specific, testable and unambiguous, with edge cases and negative paths.
+- Tag every criterion `[auto]` (an automated test can prove it) or `[device]` (needs a real iPhone, a drive, a network or a person to judge).
 - Cover every "Done when" statement of the feature.
-- Fill the **Out of Scope** list and the **Requirement Coverage** table.
+- Fill the **Out of Scope** list and the **Coverage** table.
 
 ## Step 5 — Check coverage
 
-With Bash, confirm that every owned requirement ID appears in the Requirement Coverage table and is mapped to at least one acceptance criterion. Fix any gap before continuing.
+With Bash, confirm that every "Done when" statement of the feature appears in the Coverage table and is mapped to at least one acceptance criterion. Fix any gap before continuing.
 
 ## Step 6 — Approval
 
@@ -50,4 +50,4 @@ git add spec/specifications/F-XX-*/
 git commit -m "spec(F-XX): add specification for <feature name>"
 ```
 
-Suggest `/plan F-XX` next.
+Suggest `/ux F-XX` next if the feature has a user interface (its stories have criteria a person sees or does on the phone). Otherwise suggest `/plan F-XX`, after marking UX ➖ Not needed in `progress.md`.

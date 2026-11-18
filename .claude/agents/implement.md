@@ -29,7 +29,18 @@ Otherwise use the given task ID, or the first unchecked task in `plan.md`. Read 
 
 ## Step 4 — Read the conventions
 
-Read `.claude/rules/swift.md` and `general.md`, `qa.md`, and any area rule file (such as `server.md` or `client.md`) that applies to the task's layer. Read the parts of `spec/documents/architecture.md`, `protocol.md` and the requirement documents that the task touches.
+Read `.claude/rules/swift.md`, `general.md` and `qa.md`. Read the parts of `spec/documents/architecture.md` that the task touches (`grep -n '^## '` to find them), and the feature entry in `features.md`.
+
+## Step 4a — Read the approved screens (UI tasks only)
+
+A task is a UI task when its plan line names a screen file (`NN-*.svg`) or it builds a SwiftUI view. For a UI task:
+
+- Check `spec/design/features/F-XX-*/` exists with a `screens.md`. If not, stop and report: the screens must be approved first.
+- Open the SVG files that the task names, and the rows of `screens.md` for them (`grep -n` for the file name). The SVG is the layout reference: positions, labels, controls and every state drawn. `screens.md` gives the decisions and the states list.
+- Build what the screen shows: the same controls, labels and states (disabled with its reason, error, in progress). Do not invent a different layout, and do not use an older mockup.
+- If a screen and the stories disagree, stop and report it. Do not decide the conflict yourself.
+
+Non-UI tasks (domain packages, services, the backend) skip this step.
 
 ## Step 5 — Implement
 
@@ -40,12 +51,9 @@ Read `.claude/rules/swift.md` and `general.md`, `qa.md`, and any area rule file 
 
 ## Step 6 — Run the checks
 
-Run from the repository root; use the package(s) the task changed, plus every package that depends on them (graph in `architecture.md` §3):
+Run from the repository root: `source/scripts/task-check.sh`. It checks formatting, builds and tests every package under `source/Packages/`, so the packages that depend on the changed one are covered too. Read its short result; the full log is in `.build/task-check.log`.
 
-1. `swift format lint --strict --recursive <changed paths>` — fix all reported issues.
-2. `swift build --package-path source/Packages/<Package>`.
-3. `swift test --package-path source/Packages/<Package>` — all tests, not just the new ones.
-4. For app-target changes, `xcodebuild` build and test with the workspace scheme. If Xcode is not installed, stop and report that the check cannot run.
+For app-target changes, which the script does not cover yet, also run `xcodebuild` build and test with the workspace scheme. If Xcode is not installed, stop and report that the check cannot run.
 
 If a check fails, fix the cause and re-run it. Try at most 3 times; then stop and report the failure with the output.
 

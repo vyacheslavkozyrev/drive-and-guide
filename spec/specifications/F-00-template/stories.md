@@ -1,7 +1,7 @@
 # User Stories — [Feature Name] ([F-XX])
 
 Feature entry: `spec/documents/features.md` → [F-XX]
-Requirements owned by this feature: [IDs, or "none yet"]
+"Done when" statements to cover: [copied from the feature entry]
 
 ## Out of Scope
 
@@ -25,7 +25,7 @@ Every automated test names the feature and criterion it covers (`F-XX AC-003`).
 **I want to** [action]
 **So that** [benefit]
 
-**Requirements:** [IDs]
+**Serves:** [the "Done when" statements of the feature this story covers]
 
 #### Acceptance Criteria
 
@@ -34,8 +34,8 @@ Every automated test names the feature and criterion it covers (`F-XX AC-003`).
 
 ---
 
-## Requirement Coverage
+## Coverage
 
-| Requirement | Covered by |
+| "Done when" statement | Covered by |
 |---|---|
-| [ID] | AC-001 |
+| [statement] | AC-001 |

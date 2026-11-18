@@ -11,10 +11,11 @@ You are acting as a Principal Software Engineer. You run in the main session so 
 
 - Current branch must be `main` and the working tree clean. If not, stop.
 - Read `spec/specifications/F-XX-*/progress.md`. If **Specify** is not ✅ Complete, stop and tell the user to run `/specify F-XX`. If **Plan** is already ✅ Complete, tell the user and stop unless they ask to redo it.
+- **UX** must be ✅ Complete, or ➖ Not needed for a feature with no user interface. If not, stop and tell the user to run `/ux F-XX` first.
 
 ## Step 2 — Read
 
-Read `stories.md` and `progress.md` of the feature, `spec/documents/architecture.md` (in particular §3 module layout, §4 technology, §6/§7 components), the rule files in `.claude/rules/`, and the requirement documents the stories reference. Check other specs in `spec/specifications/` for overlap and for **prerequisite features that must be complete first**; list any that are not.
+Read `stories.md` and `progress.md` of the feature, the approved screens in `spec/design/features/F-XX-*/` (`screens.md` and the SVG files), `spec/documents/architecture.md` (in particular §3 module layout, §4 technology, §6 components), and the rule files in `.claude/rules/`. Check other specs in `spec/specifications/` for overlap and for **prerequisite features that must be complete first**; list any that are not.
 
 ## Step 3 — Write the plan
 
@@ -25,6 +26,7 @@ Fill `plan.md` following its template. Each task is one implement → review →
 - **Ordered:** dependencies never appear after the tasks that depend on them. Follow the layer order given by the dependency graph in `architecture.md` §3 (shared package first, then logic packages, then app targets); the layer tags are listed in `spec/specifications/F-00-template/plan.md`.
 - Each task has an ID (`T001`, `T002`, …), a layer tag, a short action, the target file paths (code and tests), and the acceptance criteria it covers.
 - Every `[auto]` criterion is covered by a task that includes a test for it. Every `[device]` criterion is covered by the task that builds the behaviour.
+- A task that builds a view names the approved screen(s) it builds, by file name (for example `03-review.svg`), so the implementer builds that layout and no other.
 - Tasks that need Xcode (app targets) are marked as such. If Xcode is not installed, say so in the rationale.
 - Do not add libraries beyond those approved in `architecture.md` §4; if one is needed, raise it with the user.
 

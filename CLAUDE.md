@@ -16,7 +16,9 @@ Documents are **not** auto-loaded (plain paths, no `@` imports, to keep every se
 ```
 spec/documents/          project documentation
 spec/specifications/     one folder per feature: stories.md, plan.md, progress.md (+ research.md)
+spec/design/features/    one folder per feature with a user interface: UX screens (SVG), approved before Build
 source/Packages/         Swift packages (logic, tests)
+source/scripts/          build-all.sh (format, build, test) and task-check.sh (the check the commands run)
 source/<App>/            app targets (SwiftUI)
 source/Spikes/           throw-away experiments (never imported by production code)
 .claude/rules/           coding and QA rules

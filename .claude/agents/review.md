@@ -32,10 +32,10 @@ Locate `spec/specifications/F-XX-*/`. Read narrowly — these files grow with ev
 
 ## Step 4 — Review (you do it yourself; never spawn another agent)
 
-Run `git diff --cached` and read the rule files that apply: `.claude/rules/swift.md`, `.claude/rules/qa.md`, and `server.md` or `client.md` for the files changed. Read only the `architecture.md`, protocol or requirement sections the change touches (`grep -n '^## '` to find them). Produce findings, not summaries. Evaluate every hunk for:
+Run `git diff --cached` and read the rule files that apply: `.claude/rules/swift.md`, `general.md` and `qa.md`. Read only the `architecture.md` sections and the screens (`spec/design/features/F-XX-*/`) that the change touches (`grep -n '^## '` to find them). Produce findings, not summaries. Evaluate every hunk for:
 
 1. **Correctness** — satisfies the criteria it claims; logic errors, off-by-one, wrong error codes.
-2. **Guarantees and architecture** — the "must never break" guarantees in the rules, package boundaries (`architecture.md` §3), the protocol exactly as written.
+2. **Architecture** — package boundaries and dependency direction (`architecture.md` §3); the layout and states of the approved screen the task builds, for a UI change.
 3. **Security** — tokens, secrets, pairing, path safety, trust evaluation, anything logged that shouldn't be.
 4. **Tests** — present in the same change; named with feature and criterion (`F-09 AC-003`); deterministic and independent; negative and edge cases; a test that cannot fail is a defect.
 5. **Concurrency and resources** — Swift 6 isolation, cancellation, blocking work off the main actor and event loops, memory that grows with file size, unclosed handles, leftover temp files.
@@ -47,7 +47,7 @@ Severity: **BLOCKER** (wrong behaviour, broken guarantee, security problem, miss
 
 For every finding (BLOCKER, WARNING, SUGGESTION) apply the fix to the source. Do not ask for confirmation between fixes. If a fix would contradict the specification or plan, do not apply it: record it under **Deferred Findings** in `progress.md` with the reason (for a BLOCKER or WARNING this counts as unresolved).
 
-Then re-run the checks for the changed packages and their dependants (`swift format lint --strict`, `swift build`, `swift test`, as in the `implement` agent), fix failures, and `git add -A`.
+Then re-run `source/scripts/task-check.sh`, fix failures, and `git add -A`.
 
 Re-review only the lines your fixes changed (`git diff --cached` against what you reviewed) to confirm nothing new was introduced. **At most 2 review rounds in total** (initial + one re-run). Do not loop further.
 

@@ -6,6 +6,7 @@
 | -------- | ---------- | ---- | ----- |
 | Research | ➖ Optional |      |       |
 | Specify  | ⏳ Pending  |      |       |
+| UX       | ⏳ Pending  |      | Screens approved by the user; ➖ Not needed for a feature with no user interface |
 | Plan     | ⏳ Pending  |      | Approved by the user before any code is written |
 | Build    | ⏳ Pending  |      | 0 of N tasks committed |
 | Verify   | ⏳ Pending  |      | Criteria coverage and the manual checklist |

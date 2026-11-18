@@ -9,7 +9,7 @@ Status: template. Derived from [idea.md](idea.md) and [architecture.md](architec
 | F-01 | Project foundation | Enabler | [all] | 0 |
 | F-02 | [Feature name] | User | [where] | 1 |
 
-Type: **User** (visible behaviour) or **Enabler** (foundation, tooling, no user-facing behaviour). Enablers use "As a developer" stories.
+Type: **User** (visible behaviour) or **Enabler** (foundation, tooling, no user-facing behaviour). Enablers use "As a developer" stories. A feature with a user interface (its "Where" includes the iPhone app) gets a UX step before its plan; an enabler with no screen does not.
 
 ## Phases and milestones
 
@@ -32,8 +32,6 @@ F-01 ─── F-02 ─── ...
 **Type:** Enabler · **Phase:** 0 · **Depends on:** none
 
 **Summary:** [What this feature delivers, in two or three sentences.]
-
-**Traces to:** [requirement IDs, or "none yet"]
 
 **Done when:**
 - [Observable, verifiable statement]

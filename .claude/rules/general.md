@@ -1,6 +1,6 @@
 # General Rules
 
-Language rules are in `swift.md`. Add area-specific rule files (e.g. `server.md`, `client.md`) once the architecture defines those areas.
+Language rules are in `swift.md`. Add area-specific rule files (for example for the .NET backend) once the architecture defines those areas.
 
 ## Scope
 - Implement what the task and its acceptance criteria ask for, nothing more.
